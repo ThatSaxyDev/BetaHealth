@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "562031133904",
+    "project_id": "beta-health-53f7f",
+    "storage_bucket": "beta-health-53f7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562031133904:android:f454f9fb3b29c249830ad5",
+        "android_client_info": {
+          "package_name": "dev.kiishidart.betahealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562031133904-jmsk1t9hrrs0eqdscm0quhavsb10bbk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.kiishidart.betahealth",
+            "certificate_hash": "ca26560740d0472113c1786109bcc24c617f24b8"
+          }
+        },
+        {
+          "client_id": "562031133904-7q539nm9tsuoccjcug7nsmuss7h41e18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQCWhrc3vG9RW0MQFDmaZL9M8Ww2nCQ0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562031133904-7q539nm9tsuoccjcug7nsmuss7h41e18.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "562031133904-vimc7ptlnncto002p3rm15qj4nfdhcgt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.kiishidart.betahealth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
