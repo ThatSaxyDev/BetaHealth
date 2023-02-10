@@ -10,11 +10,21 @@ final themeNotifierProvider =
 class Pallete {
   // Colors
   static const blackColor = Color.fromRGBO(1, 1, 1, 1); // primary color
-  static const greyColor = Color.fromRGBO(26, 39, 45, 1); // secondary color
+  static const greyColor = Color(0xff6A8189); // secondary color
   static const drawerColor = Color.fromRGBO(18, 18, 18, 1);
   static const whiteColor = Colors.white;
-  static var redColor = Colors.red.shade500;
-  static var blueColor = Colors.blue.shade300;
+  static const brownColor = Color(0xff593C2A);
+  static const primaryTeal = Color(0xff057672);
+  static const primaryPurple = Color(0xff46348C);
+  static const tileShadow = Color(0xffC1D1B0);
+  static const backButtonGrey = Color(0xffF4F5F5);
+  static const orange = Color(0xffD95700);
+  static const textGrey = Color(0xff969696);
+  static const imagePlaceHolder1 = Color(0xffD9D9D9);
+  static var imagePlaceHolder2 = const Color(0xff969696).withOpacity(0.29);
+  static const imagePlaceHolder3 = Color(0xffECE9D9);
+  static const imagePlaceHolder4 = Color(0xffA7CAE3);
+
 
   // Themes
   static var darkModeAppTheme = ThemeData.dark().copyWith(
@@ -33,15 +43,13 @@ class Pallete {
     drawerTheme: const DrawerThemeData(
       backgroundColor: drawerColor,
     ),
-    primaryColor: redColor,
-    backgroundColor:
-        blackColor, // will be used as alternative background color
-    
+    // primaryColor: redColor,
+    backgroundColor: blackColor, // will be used as alternative background color
   );
 
   static var lightModeAppTheme = ThemeData.light().copyWith(
     // textTheme: GoogleFonts.spaceGroteskTextTheme(),
-     textTheme: ThemeData.light().textTheme.apply(
+    textTheme: ThemeData.light().textTheme.apply(
           fontFamily: 'Sk-Modernist',
         ),
     scaffoldBackgroundColor: whiteColor,
@@ -56,7 +64,7 @@ class Pallete {
     drawerTheme: const DrawerThemeData(
       backgroundColor: whiteColor,
     ),
-    primaryColor: redColor,
+    // primaryColor: redColor,
     backgroundColor: whiteColor,
   );
 }

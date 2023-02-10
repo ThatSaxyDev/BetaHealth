@@ -1,0 +1,99 @@
+Date : 2023-02-08 05:49:27
+Directory : /Users/user/Documents/Dev/Projects/betahealth/lib
+Total : 47 files,  1867 codes, 111 comments, 211 blanks, all 2189 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         34 |      1,795 |        111 |        198 |      2,104 |
+| XML      |         13 |         72 |          0 |         13 |         85 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                       |         47 |      1,867 |        111 |        211 |      2,189 |
+| . (Files)                                                                                               |          3 |        164 |         21 |         15 |        200 |
+| assets                                                                                                  |         13 |         72 |          0 |         13 |         85 |
+| assets/images                                                                                           |         13 |         72 |          0 |         13 |         85 |
+| core                                                                                                    |          6 |         78 |          4 |         18 |        100 |
+| core (Files)                                                                                            |          2 |          8 |          0 |          3 |         11 |
+| core/constants                                                                                          |          2 |         33 |          4 |          7 |         44 |
+| core/providers                                                                                          |          2 |         37 |          0 |          8 |         45 |
+| features                                                                                                |         14 |        981 |         42 |         85 |      1,108 |
+| features/auth                                                                                           |          4 |        203 |          6 |         31 |        240 |
+| features/auth/controllers                                                                               |          1 |         44 |          0 |         10 |         54 |
+| features/auth/repos                                                                                     |          1 |         90 |          0 |         15 |        105 |
+| features/auth/views                                                                                     |          2 |         69 |          6 |          6 |         81 |
+| features/base_nav_wrapper                                                                               |          2 |        157 |         12 |         21 |        190 |
+| features/base_nav_wrapper/views                                                                         |          1 |        106 |          8 |         15 |        129 |
+| features/base_nav_wrapper/widgets                                                                       |          1 |         51 |          4 |          6 |         61 |
+| features/notes                                                                                          |          3 |        225 |          2 |         15 |        242 |
+| features/notes/views                                                                                    |          2 |        169 |          2 |         12 |        183 |
+| features/notes/widgets                                                                                  |          1 |         56 |          0 |          3 |         59 |
+| features/onboarding                                                                                     |          4 |        375 |         22 |         15 |        412 |
+| features/onboarding/view                                                                                |          4 |        375 |         22 |         15 |        412 |
+| features/splash                                                                                         |          1 |         21 |          0 |          3 |         24 |
+| features/splash/view                                                                                    |          1 |         21 |          0 |          3 |         24 |
+| models                                                                                                  |          2 |        172 |          0 |         20 |        192 |
+| shared                                                                                                  |          3 |        206 |         28 |         18 |        252 |
+| shared/widgets                                                                                          |          3 |        206 |         28 |         18 |        252 |
+| theme                                                                                                   |          1 |         86 |          7 |         11 |        104 |
+| utils                                                                                                   |          5 |        108 |          9 |         31 |        148 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/bell.svg                                | XML      |          4 |          0 |          1 |          5 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/beta-logo.svg                           | XML      |         14 |          0 |          1 |         15 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/double-chevron.svg                      | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/google.svg                              | XML      |         13 |          0 |          1 |         14 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/help-filled.svg                         | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/help.svg                                | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/home.svg                                | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/info.svg                                | XML      |          6 |          0 |          1 |          7 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/insights.svg                            | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/notes-filled.svg                        | XML      |          6 |          0 |          1 |          7 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/notes.svg                               | XML      |          6 |          0 |          1 |          7 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/profile.svg                             | XML      |          5 |          0 |          1 |          6 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/assets/images/triple-chevron.svg                      | XML      |          3 |          0 |          1 |          4 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/constants/constants.dart                         | Dart     |         27 |          4 |          7 |         38 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/constants/firebase_constants.dart                | Dart     |          6 |          0 |          0 |          6 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/failure.dart                                     | Dart     |          4 |          0 |          2 |          6 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/providers/firebase_provider.dart                 | Dart     |          9 |          0 |          1 |         10 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/providers/storage_repository_provider.dart       | Dart     |         28 |          0 |          7 |         35 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/core/type_defs.dart                                   | Dart     |          4 |          0 |          1 |          5 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/auth/controllers/auth_controller.dart        | Dart     |         44 |          0 |         10 |         54 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/auth/repos/auth_repo.dart                    | Dart     |         90 |          0 |         15 |        105 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/auth/views/auth_view.dart                    | Dart     |         54 |          6 |          4 |         64 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/auth/views/home_view.dart                    | Dart     |         15 |          0 |          2 |         17 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/base_nav_wrapper/views/base_nav_wrapper.dart | Dart     |        106 |          8 |         15 |        129 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/base_nav_wrapper/widgets/nav_bar_widget.dart | Dart     |         51 |          4 |          6 |         61 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/notes/views/add_notes_view.dart              | Dart     |         62 |          0 |          4 |         66 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/notes/views/notes_view.dart                  | Dart     |        107 |          2 |          8 |        117 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/notes/widgets/notes_tile.dart                | Dart     |         56 |          0 |          3 |         59 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/onboarding/view/onboarding_page1.dart        | Dart     |         85 |          0 |          3 |         88 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/onboarding/view/onboarding_page2.dart        | Dart     |         66 |          0 |          3 |         69 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/onboarding/view/onboarding_page3.dart        | Dart     |        103 |          0 |          3 |        106 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/onboarding/view/onboarding_view.dart         | Dart     |        121 |         22 |          6 |        149 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/features/splash/view/splash_view.dart                 | Dart     |         21 |          0 |          3 |         24 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/firebase_options.dart                                 | Dart     |         60 |         12 |          5 |         77 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/main.dart                                             | Dart     |         79 |          0 |          7 |         86 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/models/note_model.dart                                | Dart     |         86 |          0 |         11 |         97 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/models/user_model.dart                                | Dart     |         86 |          0 |          9 |         95 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/router.dart                                           | Dart     |         25 |          9 |          3 |         37 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/shared/widgets/button.dart                            | Dart     |        176 |         12 |         11 |        199 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/shared/widgets/error_text.dart                        | Dart     |         11 |          0 |          2 |         13 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/shared/widgets/loader.dart                            | Dart     |         19 |         16 |          5 |         40 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/theme/palette.dart                                    | Dart     |         86 |          7 |         11 |        104 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/utils/keyboard_utils.dart                             | Dart     |          9 |          0 |          3 |         12 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/utils/picker.dart                                     | Dart     |         18 |          3 |          2 |         23 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/utils/snack_bar.dart                                  | Dart     |         11 |          5 |          3 |         19 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/utils/string_extensions.dart                          | Dart     |         40 |          1 |         10 |         51 |
+| /Users/user/Documents/Dev/Projects/betahealth/lib/utils/widget_extensions.dart                          | Dart     |         30 |          0 |         13 |         43 |
+| Total                                                                                                   |          |      1,867 |        111 |        211 |      2,189 |
++---------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

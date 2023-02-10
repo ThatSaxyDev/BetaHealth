@@ -55,6 +55,10 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   google_fonts: ^4.0.3
   google_sign_in: ^5.4.4
+  smooth_page_indicator: ^1.0.0+2
+  image_picker: ^0.8.6+1
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

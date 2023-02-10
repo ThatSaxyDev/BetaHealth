@@ -47,32 +47,39 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ref.watch(authStateChangeProvider).when(
-        data: (User? data) => ScreenUtilInit(
-              designSize: const Size(375, 812),
-              minTextAdapt: true,
-              splitScreenMode: false,
-              builder: (context, child) {
-                return MaterialApp.router(
-                  debugShowCheckedModeBanner: false,
-                  title: 'Beta Health',
-                  theme: Pallete.lightModeAppTheme,
-                  routeInformationParser: const RoutemasterParser(),
-                  routerDelegate: RoutemasterDelegate(
-                    routesBuilder: (context) {
-                      if (data != null) {
-                        getData(ref, data);
-                        if (userModel != null) {
-                          return loggedInRoute;
-                        }
+          data: (User? data) => ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            splitScreenMode: false,
+            builder: (context, child) {
+              return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                title: 'Beta Health',
+                theme: Pallete.lightModeAppTheme,
+                routeInformationParser: const RoutemasterParser(),
+                routerDelegate: RoutemasterDelegate(
+                  routesBuilder: (context) {
+                    if (data != null) {
+                      getData(ref, data);
+                      if (userModel != null) {
+                        return loggedInRoute;
                       }
-                      return loggedOutRoute;
-                    },
-                  ),
-                );
-              },
+                    }
+                    return loggedOutRoute;
+                  },
+                ),
+              );
+            },
+          ),
+          error: (Object error, StackTrace stackTrace) =>
+              ErrorText(error: error.toString()),
+          loading: () => const Center(
+            child: SizedBox(
+              height: 60,
+              width: 60,
+              child: CircularProgressIndicator(),
             ),
-        error: (Object error, StackTrace stackTrace) =>
-            ErrorText(error: error.toString()),
-        loading: () => const Loader());
+          ),
+        );
   }
 }
