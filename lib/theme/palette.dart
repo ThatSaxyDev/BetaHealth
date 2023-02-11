@@ -24,7 +24,10 @@ class Pallete {
   static var imagePlaceHolder2 = const Color(0xff969696).withOpacity(0.29);
   static const imagePlaceHolder3 = Color(0xffECE9D9);
   static const imagePlaceHolder4 = Color(0xffA7CAE3);
-
+  static const greey = Color(0xffC4C4C4);
+  static const thickRed = Color(0xffE41111);
+  static const blackTint = Color(0xff121212);
+  
 
   // Themes
   static var darkModeAppTheme = ThemeData.dark().copyWith(

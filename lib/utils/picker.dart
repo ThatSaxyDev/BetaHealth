@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void showPicker(BuildContext context, Widget child) {
   showCupertinoModalPopup<void>(
@@ -13,8 +14,12 @@ void showPicker(BuildContext context, Widget child) {
       margin: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
+      decoration: BoxDecoration(
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        borderRadius: BorderRadius.circular(15.r)
+      ),
       // Provide a background color for the popup.
-      color: CupertinoColors.systemBackground.resolveFrom(context),
+
       // Use a SafeArea widget to avoid system overlaps.
       child: SafeArea(
         top: false,

@@ -1,4 +1,5 @@
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
+import 'package:betahealth/features/help/views/help_view.dart';
 import 'package:betahealth/features/home/view/home_view.dart';
 import 'package:betahealth/features/profile/views/profile_view.dart';
 import 'package:betahealth/features/base_nav_wrapper/widgets/nav_bar_widget.dart';
@@ -22,9 +23,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
       child: Text('Insights View'),
     ),
     HomeView(),
-    Center(
-      child: Text('Help View'),
-    ),
+    HelpView(),
     ProfileView(),
   ];
 

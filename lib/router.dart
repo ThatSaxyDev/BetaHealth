@@ -1,4 +1,5 @@
 import 'package:betahealth/features/auth/views/auth_view.dart';
+import 'package:betahealth/features/help/views/new_symptoms_view.dart';
 import 'package:betahealth/features/profile/views/profile_view.dart';
 import 'package:betahealth/features/base_nav_wrapper/views/base_nav_wrapper.dart';
 import 'package:betahealth/features/notes/views/add_notes_view.dart';
@@ -33,6 +34,9 @@ final loggedInRoute = RouteMap(
         ),
     '/add-notes': (_) => const MaterialPage(
           child: AddNotesView(),
+        ),
+    '/new-symptoms': (_) => const MaterialPage(
+          child: NewSymptomsView(),
         ),
   },
 );
