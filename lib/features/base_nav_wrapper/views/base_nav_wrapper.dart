@@ -110,7 +110,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
                 //! Profile
                 NavBarWidget(
                   onTap: () => _page.value = 4,
-                  icon: 'profile',
+                  icon:  _page.value == 4 ? 'profile-selected' : 'profile',
                   label: 'Profile',
                   color: _page.value == 4 ? Pallete.primaryTeal : null,
                   fontWeight: _page.value == 4 ? FontWeight.w600 : null,

@@ -27,6 +27,8 @@ class Pallete {
   static const greey = Color(0xffC4C4C4);
   static const thickRed = Color(0xffE41111);
   static const blackTint = Color(0xff121212);
+  static const lightbrownColor = Color(0xffB48669);
+  
   
 
   // Themes

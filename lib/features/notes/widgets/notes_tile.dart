@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:betahealth/models/note_model.dart';
 import 'package:betahealth/theme/palette.dart';
+import 'package:intl/intl.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -16,7 +17,7 @@ class NotesTile extends ConsumerWidget {
     required this.note,
   });
 
-  void deletePost(WidgetRef ref, BuildContext context) async {
+  void deleteNote(WidgetRef ref, BuildContext context) async {
     showDialog(
         context: context,
         builder: (BuildContext ctx) {
@@ -87,7 +88,7 @@ class NotesTile extends ConsumerWidget {
                 ),
               ),
               Text(
-                note.updatedAt.toString(),
+                DateFormat.yMMMMd().format(note.updatedAt),
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
@@ -98,17 +99,20 @@ class NotesTile extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                note.content,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w400,
+              SizedBox(
+                width: 250.w,
+                child: Text(
+                  note.content,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 10.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
               InkWell(
-                onTap: () => deletePost(ref, context),
+                onTap: () => deleteNote(ref, context),
                 child: Icon(
                   PhosphorIcons.trash,
                   color: Colors.red,
