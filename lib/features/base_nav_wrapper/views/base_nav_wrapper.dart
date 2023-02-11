@@ -1,5 +1,6 @@
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
-import 'package:betahealth/features/auth/views/home_view.dart';
+import 'package:betahealth/features/home/view/home_view.dart';
+import 'package:betahealth/features/profile/views/profile_view.dart';
 import 'package:betahealth/features/base_nav_wrapper/widgets/nav_bar_widget.dart';
 import 'package:betahealth/features/notes/views/notes_view.dart';
 import 'package:betahealth/theme/palette.dart';
@@ -24,9 +25,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
     Center(
       child: Text('Help View'),
     ),
-    Center(
-      child: Text('Profile View'),
-    ),
+    ProfileView(),
   ];
 
   final ValueNotifier<int> _page = ValueNotifier(0);
@@ -94,7 +93,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
                 //! Home
                 NavBarWidget(
                   onTap: () => _page.value = 2,
-                  icon: 'home',
+                  icon: _page.value == 2 ? 'home-filled' : 'home',
                   label: 'Home',
                   color: _page.value == 2 ? Pallete.primaryTeal : null,
                   fontWeight: _page.value == 2 ? FontWeight.w600 : null,

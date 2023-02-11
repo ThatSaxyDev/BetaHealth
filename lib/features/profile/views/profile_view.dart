@@ -2,8 +2,8 @@ import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeView extends ConsumerWidget {
-  const HomeView({super.key});
+class ProfileView extends ConsumerWidget {
+  const ProfileView({super.key});
 
   void logOut(WidgetRef ref) async {
     ref.read(authControllerProvider.notifier).logOut();

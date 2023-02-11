@@ -1,5 +1,5 @@
 import 'package:betahealth/features/auth/views/auth_view.dart';
-import 'package:betahealth/features/auth/views/home_view.dart';
+import 'package:betahealth/features/profile/views/profile_view.dart';
 import 'package:betahealth/features/base_nav_wrapper/views/base_nav_wrapper.dart';
 import 'package:betahealth/features/notes/views/add_notes_view.dart';
 import 'package:betahealth/features/notes/views/read_notes_view.dart';

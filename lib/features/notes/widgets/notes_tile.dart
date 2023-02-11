@@ -31,7 +31,7 @@ class NotesTile extends ConsumerWidget {
                       .read(notesControllerProvider.notifier)
                       .deleteNote(note, context);
                 },
-                child: Text(
+                child: const Text(
                   'Yes',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class NotesTile extends ConsumerWidget {
                 onPressed: () {
                   Routemaster.of(context).pop();
                 },
-                child: Text(
+                child: const Text(
                   'No',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class NotesTile extends ConsumerWidget {
           borderRadius: BorderRadius.circular(15.r),
           boxShadow: [
             BoxShadow(
-                color: Pallete.tileShadow.withOpacity(0.3),
+                color: Pallete.tileShadow.withOpacity(0.5),
                 offset: const Offset(-1, 2),
                 blurRadius: 7),
           ]),
