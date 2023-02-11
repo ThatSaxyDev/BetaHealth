@@ -174,6 +174,16 @@ class _NewSymptomsViewState extends ConsumerState<NewSymptomsView> {
                 ),
               ),
               16.sbH,
+
+              // symptoms
+              SizedBox(
+                height: 76,
+                child: Row(
+                  children: [
+                    
+                  ],
+                ),
+              )
             ],
           ),
         ),
