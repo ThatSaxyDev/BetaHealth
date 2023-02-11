@@ -5,6 +5,7 @@ import 'package:betahealth/features/base_nav_wrapper/views/base_nav_wrapper.dart
 import 'package:betahealth/features/notes/views/add_notes_view.dart';
 import 'package:betahealth/features/notes/views/read_notes_view.dart';
 import 'package:betahealth/features/onboarding/view/onboarding_view.dart';
+import 'package:betahealth/features/reminders/views/reminders_view.dart';
 import 'package:betahealth/features/splash/view/splash_view.dart';
 import 'package:betahealth/models/note_model.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,9 @@ final loggedInRoute = RouteMap(
         ),
     '/new-symptoms': (_) => const MaterialPage(
           child: NewSymptomsView(),
+        ),
+    '/reminders': (_) => const MaterialPage(
+          child: RemindersView(),
         ),
   },
 );

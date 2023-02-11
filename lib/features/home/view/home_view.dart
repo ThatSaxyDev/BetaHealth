@@ -8,9 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:routemaster/routemaster.dart';
 
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
+
+  void navigateToReminders(BuildContext context) {
+    Routemaster.of(context).push('/reminders');
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,7 +75,13 @@ class HomeView extends ConsumerWidget {
               itemCount: homeViewSliderContent.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    switch (index) {
+                      case 1:
+                        navigateToReminders(context);
+                        break;
+                    }
+                  },
                   child: Container(
                     width: 318.w,
                     decoration: BoxDecoration(
