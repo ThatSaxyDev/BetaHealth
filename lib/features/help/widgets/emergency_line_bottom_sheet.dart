@@ -36,7 +36,7 @@ class EmergencyLinesBottomSheet extends ConsumerWidget {
             ),
           ),
           //! TODO: gif for emergency phone
-          Image.asset('phone'.png, height: 65.h),
+          Image.asset('call'.gif, height: 65.h),
           RichText(
             text: TextSpan(
               children: [
