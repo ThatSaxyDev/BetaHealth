@@ -1,6 +1,7 @@
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/help/views/help_view.dart';
 import 'package:betahealth/features/home/view/home_view.dart';
+import 'package:betahealth/features/insights/views/insights_view.dart';
 import 'package:betahealth/features/profile/views/profile_view.dart';
 import 'package:betahealth/features/base_nav_wrapper/widgets/nav_bar_widget.dart';
 import 'package:betahealth/features/notes/views/notes_view.dart';
@@ -19,9 +20,7 @@ class BaseNavWrapper extends ConsumerStatefulWidget {
 class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
   List<Widget> pages = const [
     NotesView(),
-    Center(
-      child: Text('Insights View'),
-    ),
+    InsightsView(),
     HomeView(),
     HelpView(),
     ProfileView(),
@@ -47,8 +46,6 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(userProvider)!;
-
     return Scaffold(
       // pages
       body: ValueListenableBuilder(
@@ -65,7 +62,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
           child: Container(
             color: Pallete.whiteColor,
             padding: EdgeInsets.only(top: 17.h, left: 17.w, right: 17.w),
-            height: 75.h,
+            height: 80.h,
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +107,7 @@ class _BaseNavWrapperState extends ConsumerState<BaseNavWrapper> {
                 //! Profile
                 NavBarWidget(
                   onTap: () => _page.value = 4,
-                  icon:  _page.value == 4 ? 'profile-selected' : 'profile',
+                  icon: _page.value == 4 ? 'profile-selected' : 'profile',
                   label: 'Profile',
                   color: _page.value == 4 ? Pallete.primaryTeal : null,
                   fontWeight: _page.value == 4 ? FontWeight.w600 : null,

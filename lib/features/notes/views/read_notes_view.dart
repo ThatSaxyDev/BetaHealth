@@ -74,7 +74,7 @@ class _ReadNotesViewState extends State<ReadNotesView> {
                       borderRadius: BorderRadius.circular(15.r),
                       boxShadow: [
                         BoxShadow(
-                            color: Pallete.tileShadow.withOpacity(0.3),
+                            color: Pallete.tileShadow.withOpacity(0.5),
                             offset: const Offset(-1, 2),
                             blurRadius: 7),
                       ]),

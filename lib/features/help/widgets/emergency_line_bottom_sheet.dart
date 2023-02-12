@@ -2,7 +2,9 @@ import 'package:betahealth/features/help/widgets/emergency_numbers_tile.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -72,8 +74,13 @@ class EmergencyLinesBottomSheet extends ConsumerWidget {
                   ),
                 ),
                 TextSpan(
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      await FlutterPhoneDirectCaller.callNumber('112');
+                    },
                   text: '112',
                   style: TextStyle(
+                    decoration: TextDecoration.underline,
                     color: Pallete.blackColor,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w700,
@@ -88,8 +95,13 @@ class EmergencyLinesBottomSheet extends ConsumerWidget {
                   ),
                 ),
                 TextSpan(
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      await FlutterPhoneDirectCaller.callNumber('199');
+                    },
                   text: '199',
                   style: TextStyle(
+                    decoration: TextDecoration.underline,
                     color: Pallete.blackColor,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w700,

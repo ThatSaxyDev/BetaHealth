@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:betahealth/core/constants/constants.dart';
 import 'package:betahealth/core/constants/firebase_constants.dart';
 import 'package:betahealth/core/failure.dart';
@@ -87,8 +89,10 @@ class AuthRepository {
       return right(userModel);
     } on FirebaseException catch (e) {
       throw e.message!;
+      // log(e.message!);
     } catch (e) {
-      return left(Failure(e.toString()));
+      log(e.toString());
+      return left(Failure('Some error occurred! Try again later'));
     }
   }
 

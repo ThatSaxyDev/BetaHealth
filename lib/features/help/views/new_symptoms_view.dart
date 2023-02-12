@@ -414,6 +414,7 @@ class _NewSymptomsViewState extends ConsumerState<NewSymptomsView> {
                                                       }
                                                       break;
                                                   }
+                                                  log(selectedIndexx.toString());
 
                                                   setState(() {});
                                                 },

@@ -28,8 +28,7 @@ class Pallete {
   static const thickRed = Color(0xffE41111);
   static const blackTint = Color(0xff121212);
   static const lightbrownColor = Color(0xffB48669);
-  
-  
+  static const textGreen = Color(0xff4E6139);
 
   // Themes
   static var darkModeAppTheme = ThemeData.dark().copyWith(

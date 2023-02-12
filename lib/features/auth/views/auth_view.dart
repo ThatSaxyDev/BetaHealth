@@ -43,10 +43,7 @@ class AuthView extends ConsumerWidget {
                       children: [
                         SizedBox(
                           width: 30.w,
-                          child: Hero(
-                            tag: 'hero',
-                            child: Image.asset('google'.png),
-                          ),
+                          child: Image.asset('google'.png),
                         ),
                         Text(
                           'Continue with Google',

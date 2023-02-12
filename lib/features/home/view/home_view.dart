@@ -1,5 +1,7 @@
+import 'package:betahealth/core/bloc/global_bloc.dart';
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/home/widgets/reminders_tile.dart';
+import 'package:betahealth/models/medicine.dart';
 import 'package:betahealth/shared/widgets/button.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:routemaster/routemaster.dart';
+import 'package:provider/provider.dart' as pro;
 
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
@@ -20,6 +23,7 @@ class HomeView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
+    final GlobalBloc globalBloc = pro.Provider.of<GlobalBloc>(context);
     String userName = user.name;
     List<String> name = userName.split(' ');
     String firstName = name[0];
@@ -84,6 +88,7 @@ class HomeView extends ConsumerWidget {
                   },
                   child: Container(
                     width: 318.w,
+                    margin: EdgeInsets.only(right: 10.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
                       image: DecorationImage(
@@ -111,16 +116,33 @@ class HomeView extends ConsumerWidget {
           ),
           SizedBox(
             height: 153.h,
-            child: ListView.builder(
-              padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 27.h),
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return RemindersTile(
-                  icon: reminderIcons[index],
-                );
-              },
-            ),
+            child: StreamBuilder<List<Medicine>>(
+                stream: globalBloc.medicineList$,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    //if no data is saved
+                    return const SizedBox.shrink();
+                  } else if (snapshot.data!.isEmpty) {
+                    return Center(
+                      child: Text(
+                      '⏰',
+                      style: TextStyle(
+                        fontSize: 70.sp
+                      ),
+                    ),
+                    );
+                  } else {
+                    return ListView.builder(
+                      padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 27.h),
+                      physics: const AlwaysScrollableScrollPhysics(
+                          parent: BouncingScrollPhysics()),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return RemindersTile(medicine: snapshot.data![index]);
+                      },
+                    );
+                  }
+                }),
           ),
           27.sbH,
           Align(

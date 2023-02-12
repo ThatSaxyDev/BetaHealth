@@ -1,3 +1,4 @@
+import 'package:betahealth/core/bloc/global_bloc.dart';
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/auth/views/auth_view.dart';
 import 'package:betahealth/firebase_options.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
+import 'package:provider/provider.dart' as pro;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,7 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   UserModel? userModel;
+  GlobalBloc? globalBloc;
 
   void getData(WidgetRef ref, User data) async {
     userModel = await ref
@@ -45,6 +48,12 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    globalBloc = GlobalBloc();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ref.watch(authStateChangeProvider).when(
           data: (User? data) => ScreenUtilInit(
@@ -52,21 +61,24 @@ class _MyAppState extends ConsumerState<MyApp> {
             minTextAdapt: true,
             splitScreenMode: false,
             builder: (context, child) {
-              return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                title: 'Beta Health',
-                theme: Pallete.lightModeAppTheme,
-                routeInformationParser: const RoutemasterParser(),
-                routerDelegate: RoutemasterDelegate(
-                  routesBuilder: (context) {
-                    if (data != null) {
-                      getData(ref, data);
-                      if (userModel != null) {
-                        return loggedInRoute;
+              return pro.Provider<GlobalBloc>.value(
+                value: globalBloc!,
+                child: MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Beta Health',
+                  theme: Pallete.lightModeAppTheme,
+                  routeInformationParser: const RoutemasterParser(),
+                  routerDelegate: RoutemasterDelegate(
+                    routesBuilder: (context) {
+                      if (data != null) {
+                        getData(ref, data);
+                        if (userModel != null) {
+                          return loggedInRoute;
+                        }
                       }
-                    }
-                    return loggedOutRoute;
-                  },
+                      return loggedOutRoute;
+                    },
+                  ),
                 ),
               );
             },
