@@ -29,6 +29,7 @@ class Pallete {
   static const blackTint = Color(0xff121212);
   static const lightbrownColor = Color(0xffB48669);
   static const textGreen = Color(0xff4E6139);
+  static const blue = Color(0xff034DC6);
 
   // Themes
   static var darkModeAppTheme = ThemeData.dark().copyWith(

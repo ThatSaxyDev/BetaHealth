@@ -30,7 +30,7 @@ class EmergencyTile extends ConsumerWidget {
         height: 68.h,
         width: 327.w,
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.h),
-        margin: EdgeInsets.only(bottom: 20.h),
+        // margin: EdgeInsets.only(bottom: 20.h),
         decoration: BoxDecoration(
             color: Pallete.whiteColor,
             borderRadius: BorderRadius.circular(15.r),

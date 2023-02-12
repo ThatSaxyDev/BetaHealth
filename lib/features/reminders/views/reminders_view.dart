@@ -118,14 +118,53 @@ class RemindersView extends ConsumerWidget {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   //if no data is saved
-                   return const SizedBox.shrink();
+                  return const SizedBox.shrink();
                 } else if (snapshot.data!.isEmpty) {
                   return Center(
-                    child: Text(
-                      '⏰',
-                      style: TextStyle(
-                        fontSize: 70.sp
-                      ),
+                    child: Column(
+                      children: [
+                        90.sbH,
+                        Image.asset('no-reminder'.png, height: 179.h),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'No',
+                                style: TextStyle(
+                                  color: Pallete.blackColor,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' reminders ',
+                                style: TextStyle(
+                                  color: Pallete.primaryTeal,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'made yet',
+                                style: TextStyle(
+                                  color: Pallete.blackColor,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        6.sbH,
+                        Text(
+                          'Want to set one?',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 } else {
@@ -147,7 +186,7 @@ class RemindersView extends ConsumerWidget {
 
       // using a bottom nav bar for adding new reminders
       bottomNavigationBar: Material(
-        elevation: 5,
+        elevation: 0,
         child: Container(
           color: Pallete.whiteColor,
           padding: EdgeInsets.symmetric(horizontal: 24.w),

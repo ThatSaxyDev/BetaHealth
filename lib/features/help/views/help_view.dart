@@ -66,17 +66,40 @@ class HelpView extends ConsumerWidget {
           // section for thw symptoms list, or add symptoms
           Expanded(
             child: Center(
-              child: BButton(
-                width: 327.w,
-                onTap: () => navigateToNewSymptoms(context),
-                item: Text(
-                  'Add symptoms',
-                  style: TextStyle(
-                    color: Pallete.whiteColor,
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w500,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: Text(
+                      'You haven\'t logged in any symptom yet, you can log in now, so we can help.',
+                      style: TextStyle(
+                        color: Pallete.blackColor,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                ),
+                  Image.asset(
+                    'heart'.png,
+                    height: 162.42.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 17.h),
+                    child: BButton(
+                      width: 327.w,
+                      onTap: () => navigateToNewSymptoms(context),
+                      item: Text(
+                        'Add symptoms',
+                        style: TextStyle(
+                          color: Pallete.whiteColor,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           )

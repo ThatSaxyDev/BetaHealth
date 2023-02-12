@@ -20,6 +20,12 @@ class HomeView extends ConsumerWidget {
     Routemaster.of(context).push('/reminders');
   }
 
+  void navigateToAddReminders(BuildContext context) {
+    Routemaster.of(context).push('/add-reminders');
+  }
+
+  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
@@ -124,12 +130,67 @@ class HomeView extends ConsumerWidget {
                     return const SizedBox.shrink();
                   } else if (snapshot.data!.isEmpty) {
                     return Center(
-                      child: Text(
-                      '⏰',
-                      style: TextStyle(
-                        fontSize: 70.sp
+                      child: SizedBox(
+                        height: 112.h,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'no-reminder'.png,
+                              height: 112.h,
+                            ),
+                            10.sbW,
+                            SizedBox(
+                              height: 80.h,
+                              width: 180.w,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RichText(
+                                    textAlign: TextAlign.left,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'No reminders made yet\n',
+                                          style: TextStyle(
+                                            color: Pallete.blackColor,
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: 'Want to set one?',
+                                          style: TextStyle(
+                                            color: Pallete.primaryTeal,
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  BButton(
+                                    height: 30.h,
+                                    width: 87.w,
+                                    color: Pallete.blue,
+                                    onTap: () => navigateToAddReminders(context),
+                                    item: Text(
+                                      'Add reminder',
+                                      style: TextStyle(
+                                        color: Pallete.whiteColor,
+                                        fontSize: 9.sp,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                     );
                   } else {
                     return ListView.builder(
