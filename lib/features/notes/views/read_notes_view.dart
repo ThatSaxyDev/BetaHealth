@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:betahealth/features/notes/views/update_note_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,22 +67,31 @@ class _ReadNotesViewState extends State<ReadNotesView> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Container(
-                  height: 40.h,
-                  width: 40.w,
-                  decoration: BoxDecoration(
-                      color: Pallete.whiteColor,
-                      borderRadius: BorderRadius.circular(15.r),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Pallete.tileShadow.withOpacity(0.5),
-                            offset: const Offset(-1, 2),
-                            blurRadius: 7),
-                      ]),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'new-note'.svg,
-                      height: 11.35.h,
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) {
+                        return UpdateNotesView(note: widget.note);
+                      },
+                    ));
+                  },
+                  child: Container(
+                    height: 40.h,
+                    width: 40.w,
+                    decoration: BoxDecoration(
+                        color: Pallete.whiteColor,
+                        borderRadius: BorderRadius.circular(15.r),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Pallete.tileShadow.withOpacity(0.5),
+                              offset: const Offset(-1, 2),
+                              blurRadius: 7),
+                        ]),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        'new-note'.svg,
+                        height: 11.35.h,
+                      ),
                     ),
                   ),
                 ),
@@ -171,8 +181,7 @@ class _ReadNotesViewState extends State<ReadNotesView> {
                                             decoration: BoxDecoration(
                                                 color: Pallete.primaryTeal,
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        16.r),
+                                                    BorderRadius.circular(16.r),
                                                 image: DecorationImage(
                                                   image: NetworkImage(
                                                       widget.note.photo!),

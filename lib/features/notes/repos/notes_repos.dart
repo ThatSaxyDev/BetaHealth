@@ -58,6 +58,17 @@ class NotesRepository {
     }
   }
 
+  // update note
+  FutureVoid updateNote(NoteModel note) async {
+    try {
+      return right(_notes.doc(note.id).update(note.toMap()));
+    } on FirebaseException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
   CollectionReference get _notes =>
       _firestore.collection(FirebaseConstants.notesCollection);
 

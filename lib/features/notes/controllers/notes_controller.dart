@@ -130,4 +130,33 @@ class NotesController extends StateNotifier<bool> {
       (r) => null,
     );
   }
+
+  // update note
+  void updateNote({
+    required BuildContext context,
+    required NoteModel theNote,
+    required String title,
+    required String content,
+  }) async {
+    state = true;
+    NoteModel note = NoteModel(
+      uid: theNote.uid,
+      id: theNote.id,
+      title: title,
+      content: content,
+      createdAt: theNote.createdAt,
+      updatedAt: DateTime.now(),
+    );
+
+    final res = await _notesRepository.updateNote(note);
+
+    state = false;
+
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) {
+        showSnackBar(context, 'Note updated!');
+      },
+    );
+  }
 }

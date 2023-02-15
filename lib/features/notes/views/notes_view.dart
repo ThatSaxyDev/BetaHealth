@@ -1,5 +1,6 @@
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/notes/controllers/notes_controller.dart';
+import 'package:betahealth/features/notes/views/new_read_notes_view.dart';
 import 'package:betahealth/features/notes/views/read_notes_view.dart';
 import 'package:betahealth/features/notes/widgets/notes_tile.dart';
 import 'package:betahealth/shared/widgets/button.dart';
@@ -133,7 +134,8 @@ class _NotesViewState extends ConsumerState<NotesView> {
                                       Navigator.of(context)
                                           .push(MaterialPageRoute(
                                         builder: (context) {
-                                          return ReadNotesView(note: note);
+                                          // return ReadNotesView(note: note);
+                                          return NewReadNotesView(note: note);
                                         },
                                       ));
                                     },
