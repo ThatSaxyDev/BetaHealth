@@ -1,5 +1,6 @@
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/notes/controllers/notes_controller.dart';
+import 'package:betahealth/features/notes/delegates/search_notes_delegate.dart';
 import 'package:betahealth/features/notes/views/new_read_notes_view.dart';
 import 'package:betahealth/features/notes/views/read_notes_view.dart';
 import 'package:betahealth/features/notes/widgets/notes_tile.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:routemaster/routemaster.dart';
 
 class NotesView extends ConsumerStatefulWidget {
@@ -70,9 +72,16 @@ class _NotesViewState extends ConsumerState<NotesView> {
 
                 // button
                 TTransparentButton(
-                  onTap: () {},
+                  onTap: () {
+                    showSearch(
+                        context: context,
+                        delegate: SearchNoteDelegate(ref));
+                  },
                   color: Pallete.primaryTeal,
-                  child: SvgPicture.asset('bell'.svg),
+                  child: const Icon(
+                    PhosphorIcons.magnifyingGlass,
+                    color: Pallete.primaryTeal,
+                  ),
                 ),
               ],
             ),
@@ -122,9 +131,9 @@ class _NotesViewState extends ConsumerState<NotesView> {
                       return Column(
                         children: [
                           SizedBox(
-                            height: 450.h,
+                            height: 455.h,
                             child: ListView.builder(
-                             padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 10.h),
                               physics: const AlwaysScrollableScrollPhysics(
                                   parent: BouncingScrollPhysics()),
                               itemCount: data.length,
@@ -148,7 +157,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
                               },
                             ),
                           ),
-                          21.sbH,
+                          15.sbH,
                           InkWell(
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
@@ -170,8 +179,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
                                   width: 46.8.w,
                                   decoration: BoxDecoration(
                                       color: Pallete.whiteColor,
-                                      borderRadius:
-                                          BorderRadius.circular(15.r),
+                                      borderRadius: BorderRadius.circular(15.r),
                                       boxShadow: [
                                         BoxShadow(
                                             color: Pallete.tileShadow

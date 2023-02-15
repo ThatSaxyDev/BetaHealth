@@ -69,6 +69,33 @@ class NotesRepository {
     }
   }
 
+  // search notes
+  Stream<List<NoteModel>> searchNotes(String query, String uid) {
+    // List<String> keywords = query.split(" ");
+    return _notes
+        .where('uid', isEqualTo: uid)
+        // .where('content', arrayContainsAny: keywords)
+        .where(
+          'content',
+          isGreaterThanOrEqualTo: query.isEmpty ? 0 : query,
+          isLessThan: query.isEmpty
+              ? null
+              : query.substring(0, query.length - 1) +
+                  String.fromCharCode(
+                    query.codeUnitAt(query.length - 1) + 1,
+                  ),
+        )
+        .snapshots()
+        .map((event) {
+      List<NoteModel> notes = [];
+      for (var note in event.docs) {
+        notes.add(NoteModel.fromMap(note.data() as Map<String, dynamic>));
+      }
+
+      return notes;
+    });
+  }
+
   CollectionReference get _notes =>
       _firestore.collection(FirebaseConstants.notesCollection);
 
