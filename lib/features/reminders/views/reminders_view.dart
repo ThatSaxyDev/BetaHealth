@@ -1,3 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:provider/provider.dart' as pro;
+import 'package:routemaster/routemaster.dart';
+
 import 'package:betahealth/core/bloc/global_bloc.dart';
 import 'package:betahealth/features/home/widgets/reminders_tile.dart';
 import 'package:betahealth/features/reminders/views/add_reminder_view.dart';
@@ -7,15 +17,17 @@ import 'package:betahealth/shared/widgets/button.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:routemaster/routemaster.dart';
-import 'package:provider/provider.dart' as pro;
 
 class RemindersView extends ConsumerWidget {
-  const RemindersView({super.key});
+  final Medicine? medicine;
+  const RemindersView({
+    super.key,
+    this.medicine,
+  });
+
+  void deleteReminder(GlobalBloc globalBloc, BuildContext context) async {
+    globalBloc.removeMedicine(medicine!);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -174,7 +186,30 @@ class RemindersView extends ConsumerWidget {
                         parent: BouncingScrollPhysics()),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      return RemindersTile(medicine: snapshot.data![index]);
+                      return Slidable(
+                        key: UniqueKey(),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          dismissible: DismissiblePane(onDismissed: () {
+                            deleteReminder(globalBloc, context);
+                          }),
+                          children: [
+                            //! DELETE
+                            SlidableAction(
+                                flex: 1,
+                                onPressed: (value) {
+                                  deleteReminder(globalBloc, context);
+                                },
+                                backgroundColor:
+                                    Pallete.thickRed.withOpacity(0.2),
+                                foregroundColor: Pallete.thickRed,
+                                icon: PhosphorIcons.trashSimpleFill),
+                          ],
+                        ),
+                        child: RemindersTile(
+                          medicine: snapshot.data![index],
+                        ),
+                      );
                     },
                   );
                 }
