@@ -2,7 +2,6 @@ import 'package:betahealth/models/errors.dart';
 import 'package:betahealth/models/medicine_type.dart';
 import 'package:rxdart/rxdart.dart';
 
-
 class NewEntryBloc {
   BehaviorSubject<MedicineType>? _selectedMedicineType$;
   ValueStream<MedicineType>? get selectedMedicineType =>

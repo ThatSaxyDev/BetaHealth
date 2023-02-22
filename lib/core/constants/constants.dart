@@ -34,4 +34,6 @@ class Constants {
     'thankyou': '${Constants.awardsPath}/thankyou.png',
     'til': '${Constants.awardsPath}/til.png',
   };
+
+  static const newsUrl = 'https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=c283016713454c249937b30a49fae579';
 }
