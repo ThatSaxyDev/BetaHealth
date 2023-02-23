@@ -36,4 +36,6 @@ class Constants {
   };
 
   static const newsUrl = 'https://newsapi.org/v2/top-headlines?country=ng&category=health&apiKey=c283016713454c249937b30a49fae579';
+
+  static const defaultArticleImage = 'https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3869&q=80';
 }

@@ -29,7 +29,7 @@ class ProfileTile extends ConsumerWidget {
       highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
-        height: 50.h,
+        height: 60.h,
         padding: EdgeInsets.only(left: 11.w, right: 19.43.h),
         margin: EdgeInsets.only(bottom: 16.h, left: 24.w, right: 24.w),
         decoration: BoxDecoration(
@@ -53,7 +53,7 @@ class ProfileTile extends ConsumerWidget {
               title,
               style: TextStyle(
                 color: Pallete.blackTint,
-                fontSize: 12.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),

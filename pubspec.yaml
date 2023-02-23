@@ -69,6 +69,7 @@ dependencies:
   awesome_notifications_fcm: ^0.7.4+1
   grouped_list: ^5.1.2
   dio: ^5.0.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

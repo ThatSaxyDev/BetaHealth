@@ -1,4 +1,8 @@
+import 'dart:developer';
+
+import 'package:betahealth/core/constants/constants.dart';
 import 'package:betahealth/features/home/view/home_view.dart';
+import 'package:betahealth/features/insights/repos/insights_repo.dart';
 import 'package:betahealth/shared/widgets/button.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
@@ -13,6 +17,7 @@ class InsightsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final articles = ref.watch(articlesDataProvider);
     return Scaffold(
       body: Column(
         children: [
@@ -142,26 +147,55 @@ class InsightsView extends ConsumerWidget {
           16.sbH,
           SizedBox(
             height: 133.h,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              physics: const AlwaysScrollableScrollPhysics(
-                  parent: BouncingScrollPhysics()),
-              itemCount: insightImages.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 116.w,
-                  margin: EdgeInsets.only(right: 13.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.r),
-                    border: Border.all(color: Pallete.primaryTeal),
-                    image: DecorationImage(
-                        image: AssetImage(insightImages[index].png),
-                        fit: BoxFit.cover),
-                  ),
+            child: articles.when(
+              data: (data) {
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  physics: const AlwaysScrollableScrollPhysics(
+                      parent: BouncingScrollPhysics()),
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 116.w,
+                      margin: EdgeInsets.only(right: 13.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.r),
+                        border: Border.all(color: Pallete.primaryTeal),
+                        image: DecorationImage(
+                            image: NetworkImage(data[index].urlToImage ??
+                                Constants.defaultArticleImage),
+                            fit: BoxFit.cover),
+                      ),
+                    );
+                  },
                 );
               },
+              error: (error, stackTrace) => Text(error.toString()),
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
+            // ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+            //   physics: const AlwaysScrollableScrollPhysics(
+            //       parent: BouncingScrollPhysics()),
+            //   itemCount: insightImages.length,
+            //   itemBuilder: (context, index) {
+            //     return Container(
+            //       width: 116.w,
+            //       margin: EdgeInsets.only(right: 13.w),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(15.r),
+            //         border: Border.all(color: Pallete.primaryTeal),
+            //         image: DecorationImage(
+            //             image: AssetImage(insightImages[index].png),
+            //             fit: BoxFit.cover),
+            //       ),
+            //     );
+            //   },
+            // ),
           ),
 
           28.sbH,
@@ -171,7 +205,7 @@ class InsightsView extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Articles',
+                  'Videos',
                   style: TextStyle(
                     color: Pallete.primaryPurple,
                     fontSize: 16.sp,
