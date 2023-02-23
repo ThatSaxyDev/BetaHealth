@@ -3,9 +3,13 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:betahealth/core/constants/constants.dart';
+import 'package:betahealth/core/constants/firebase_constants.dart';
 import 'package:betahealth/core/failure.dart';
+import 'package:betahealth/core/providers/firebase_provider.dart';
 import 'package:betahealth/core/type_defs.dart';
 import 'package:betahealth/models/news_model.dart';
+import 'package:betahealth/models/video_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
@@ -15,9 +19,12 @@ final articlesDataProvider = FutureProvider<List<NewsModel>>((ref) async {
 });
 
 final Provider<InsightsRepo> insightsRepoProvider =
-    Provider((ref) => InsightsRepo());
+    Provider((ref) => InsightsRepo(firestore: ref.watch(firestoreProvider)));
 
 class InsightsRepo {
+  final FirebaseFirestore _firestore;
+  InsightsRepo({required FirebaseFirestore firestore}) : _firestore = firestore;
+
   // get list of news from newsapi.org
   Future<List<NewsModel>> getNewsInsights() async {
     try {
@@ -44,39 +51,13 @@ class InsightsRepo {
     }
   }
 
-  // FutureEither<List<NewsModel>> getNewsInsights() async {
-  //   try {
-  //     // make request
-  //     http.Request request = http.Request("GET", Uri.parse(Constants.newsUrl))
-  //       ..headers.addAll({"Content-Type": "application/json; charset=UTF-8"});
+  // get videos
+  Stream<List<VideoModel>> getVideos() {
+    return _videos.snapshots().map((event) => event.docs
+        .map((e) => VideoModel.fromMap(e.data() as Map<String, dynamic>))
+        .toList());
+  }
 
-  //     http.StreamedResponse response = await request.send();
-
-  //     String responseStream = await response.stream.bytesToString();
-
-  //     Map<String, dynamic> responseInMap = jsonDecode(responseStream);
-
-  //     if (responseInMap['status'] == 'ok') {
-  //       //! hold the data temporarily
-  //       final List tempNewsList = responseInMap["articles"];
-
-  //       //! create the empty news list
-  //       final List<NewsModel> theNewsList = [];
-
-  //       // add the data to the list
-  //       for (var element in tempNewsList) {
-  //         theNewsList.add(NewsModel.fromJson(element));
-  //       }
-
-  //       log(theNewsList.length.toString());
-
-  //       return right(theNewsList);
-  //     } else {
-  //       String error = responseInMap['status'];
-  //       return left(Failure(error));
-  //     }
-  //   } catch (e) {
-  //     return left(Failure(e.toString()));
-  //   }
-  // }
+  CollectionReference get _videos =>
+      _firestore.collection(FirebaseConstants.videosCollection);
 }

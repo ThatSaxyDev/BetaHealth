@@ -24,7 +24,7 @@ class ArticlesView extends ConsumerWidget {
         children: [
           71.sbH,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 21.w),
+            padding: EdgeInsets.symmetric(horizontal: 21.w).copyWith(bottom: 10.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -73,7 +73,7 @@ class ArticlesView extends ConsumerWidget {
                   scrollDirection: Axis.vertical,
                   padding: EdgeInsets.symmetric(
                     horizontal: 24.w,
-                    vertical: 25.h,
+                    vertical: 15.h,
                   ),
                   physics: const AlwaysScrollableScrollPhysics(
                       parent: BouncingScrollPhysics()),
@@ -84,6 +84,7 @@ class ArticlesView extends ConsumerWidget {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ArticlesWebView(
                             url: data[index].url!,
+                            isFromVideos: false,
                           ),
                         ));
                       },

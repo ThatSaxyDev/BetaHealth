@@ -74,6 +74,10 @@ dependencies:
   webview_flutter_android: ^3.3.1
   webview_flutter_wkwebview: ^3.1.1
   shimmer: ^2.0.0
+  video_player: ^2.5.2
+  chewie: ^1.4.0
+  video_thumbnail: ^0.5.3
+  path_provider: ^2.0.13
 
 dev_dependencies:
   flutter_test:

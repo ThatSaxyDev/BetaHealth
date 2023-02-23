@@ -1,16 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:betahealth/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
+import 'package:betahealth/theme/palette.dart';
+
 class ArticlesWebView extends ConsumerStatefulWidget {
   final String url;
+  final bool isFromVideos;
   const ArticlesWebView({
     super.key,
     required this.url,
+    required this.isFromVideos,
   });
 
   @override
@@ -66,7 +69,7 @@ Page resource error:
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
               debugPrint('blocking navigation to ${request.url}');
-              return NavigationDecision.prevent;
+              return NavigationDecision.navigate;
             }
             debugPrint('allowing navigation to ${request.url}');
             return NavigationDecision.navigate;
@@ -99,7 +102,7 @@ Page resource error:
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Article',
+          widget.isFromVideos == true ? 'Video' : 'Articles',
         ),
         foregroundColor: Pallete.blackColor,
       ),
