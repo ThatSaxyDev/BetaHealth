@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:betahealth/core/constants/constants.dart';
 import 'package:betahealth/features/home/view/home_view.dart';
 import 'package:betahealth/features/insights/repos/insights_repo.dart';
+import 'package:betahealth/features/insights/views/articles_view.dart';
+import 'package:betahealth/features/insights/views/articles_web_view.dart';
 import 'package:betahealth/shared/widgets/button.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class InsightsView extends ConsumerWidget {
   const InsightsView({super.key});
@@ -130,7 +133,11 @@ class InsightsView extends ConsumerWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ArticlesView(),
+                        ));
+                  },
                   child: Text(
                     'See More',
                     style: TextStyle(
@@ -156,24 +163,50 @@ class InsightsView extends ConsumerWidget {
                       parent: BouncingScrollPhysics()),
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Container(
-                      width: 116.w,
-                      margin: EdgeInsets.only(right: 13.w),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.r),
-                        border: Border.all(color: Pallete.primaryTeal),
-                        image: DecorationImage(
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ArticlesWebView(
+                            url: data[index].url!,
+                          ),
+                        ));
+                      },
+                      child: Container(
+                        width: 116.w,
+                        margin: EdgeInsets.only(right: 13.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          border: Border.all(color: Pallete.primaryTeal),
+                          image: DecorationImage(
                             image: NetworkImage(data[index].urlToImage ??
                                 Constants.defaultArticleImage),
-                            fit: BoxFit.cover),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     );
                   },
                 );
               },
               error: (error, stackTrace) => Text(error.toString()),
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
+              loading: () => Shimmer.fromColors(
+                baseColor: Pallete.greey,
+                highlightColor: Pallete.whiteColor,
+                enabled: true,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 21.0.w),
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 4,
+                    itemBuilder: (context, index) => Container(
+                      width: 116.w,
+                      margin: EdgeInsets.only(right: 13.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             // ListView.builder(
