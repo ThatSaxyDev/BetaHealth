@@ -4,6 +4,7 @@ import 'package:betahealth/core/providers/storage_repository_provider.dart';
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/notes/repos/notes_repos.dart';
 import 'package:betahealth/models/note_model.dart';
+import 'package:betahealth/models/user_model.dart';
 import 'package:betahealth/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,6 +31,10 @@ final getUserNotesProvider = StreamProvider.family((ref, String uid) {
 final getNoteByIdProvider = StreamProvider.family((ref, String noteId) {
   final noteController = ref.watch(notesControllerProvider.notifier);
   return noteController.getNoteById(noteId);
+});
+
+final searchNoteProvider = StreamProvider.family((ref, String query) {
+  return ref.watch(notesControllerProvider.notifier).searchNotes(query);
 });
 
 class NotesController extends StateNotifier<bool> {
@@ -130,4 +135,40 @@ class NotesController extends StateNotifier<bool> {
       (r) => null,
     );
   }
+
+  // update note
+  void updateNote({
+    required BuildContext context,
+    required NoteModel theNote,
+    required String title,
+    required String content,
+  }) async {
+    state = true;
+    NoteModel note = NoteModel(
+      uid: theNote.uid,
+      id: theNote.id,
+      title: title,
+      content: content,
+      createdAt: theNote.createdAt,
+      updatedAt: DateTime.now(),
+    );
+
+    final res = await _notesRepository.updateNote(note);
+
+    state = false;
+
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) {
+        showSnackBar(context, 'Note updated!');
+      },
+    );
+  }
+
+  // search notes
+  Stream<List<NoteModel>> searchNotes(String query) {
+    UserModel user = _ref.read(userProvider)!;
+    return _notesRepository.searchNotes(query, user.uid);
+  }
+
 }

@@ -15,6 +15,7 @@ class Pallete {
   static const whiteColor = Colors.white;
   static const brownColor = Color(0xff593C2A);
   static const primaryTeal = Color(0xff057672);
+  static const offWhiteTeal = Color(0xfff3f8f8);
   static const primaryPurple = Color(0xff46348C);
   static const tileShadow = Color(0xffC1D1B0);
   static const backButtonGrey = Color(0xffF4F5F5);

@@ -17,14 +17,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart' as pro;
 import 'package:routemaster/routemaster.dart';
 
-class AddReminderView extends ConsumerStatefulWidget {
-  const AddReminderView({Key? key}) : super(key: key);
+class NewAddReminderView extends ConsumerStatefulWidget {
+  const NewAddReminderView({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<AddReminderView> createState() => _AddReminderViewState();
+  ConsumerState<NewAddReminderView> createState() => _NewAddReminderViewState();
 }
 
-class _AddReminderViewState extends ConsumerState<AddReminderView> {
+class _NewAddReminderViewState extends ConsumerState<NewAddReminderView> {
   late TextEditingController nameController;
   late TextEditingController dosageController;
   // late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -109,6 +109,7 @@ class _AddReminderViewState extends ConsumerState<AddReminderView> {
                 maxLength: 12,
                 controller: dosageController,
                 textCapitalization: TextCapitalization.words,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   isDense: true,
                   border: OutlineInputBorder(

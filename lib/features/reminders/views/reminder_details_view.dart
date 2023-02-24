@@ -107,20 +107,7 @@ class ReminderDetailsView extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BButton(
-                  width: 40.w,
-                  height: 33.3.h,
-                  radius: 5.r,
-                  color: Pallete.backButtonGrey,
-                  item: Icon(
-                    Icons.arrow_back,
-                    color: Pallete.blackColor,
-                    size: 16.h,
-                  ),
-                  onTap: () {
-                    Routemaster.of(context).pop();
-                  },
-                ),
+                40.sbW,
                 Text(
                   'Reminders',
                   style: TextStyle(
