@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:betahealth/core/bloc/global_bloc.dart';
+import 'package:betahealth/core/notifications/notifications.dart';
 import 'package:betahealth/features/base_nav_wrapper/views/base_nav_wrapper.dart';
 import 'package:betahealth/features/reminders/bloc/new_entry_bloc.dart';
 import 'package:betahealth/models/errors.dart';
@@ -11,6 +12,7 @@ import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/convert_time.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -99,16 +101,20 @@ class _AddReminderViewState extends ConsumerState<AddReminderView> {
 
               10.sbH,
               const PanelTitle(
-                title: 'Dosage in mg',
+                title: 'Dosage (in mg)',
                 isRequired: false,
               ),
               15.sbH,
 
               // dosage input
               TextFormField(
-                maxLength: 12,
+                maxLength: 4,
                 controller: dosageController,
                 textCapitalization: TextCapitalization.words,
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                ],
                 decoration: InputDecoration(
                   isDense: true,
                   border: OutlineInputBorder(
@@ -262,6 +268,14 @@ class _AddReminderViewState extends ConsumerState<AddReminderView> {
 
                     //schedule notification
                     // scheduleNotification(newEntryMedicine);
+                    addReminderNotification(
+                      name: medicineName!,
+                      dosage: dosage!,
+                      type: medicineType,
+                      interval: interval,
+                    );
+
+                    scheduleReminderNotification(newEntryMedicine);
 
                     // ! TODO: implement success screen
                     Routemaster.of(context).pop();

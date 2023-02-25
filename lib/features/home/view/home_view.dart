@@ -1,8 +1,12 @@
 import 'package:betahealth/core/bloc/global_bloc.dart';
+import 'package:betahealth/core/constants/constants.dart';
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/home/widgets/reminders_tile.dart';
+import 'package:betahealth/features/insights/repos/insights_repo.dart';
+import 'package:betahealth/features/insights/views/articles_web_view.dart';
 import 'package:betahealth/models/medicine.dart';
 import 'package:betahealth/shared/widgets/button.dart';
+import 'package:betahealth/shared/widgets/loader.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
@@ -24,10 +28,9 @@ class HomeView extends ConsumerWidget {
     Routemaster.of(context).push('/add-reminders');
   }
 
-  
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final articles = ref.watch(articlesDataProvider);
     final user = ref.watch(userProvider)!;
     final GlobalBloc globalBloc = pro.Provider.of<GlobalBloc>(context);
     String userName = user.name;
@@ -66,10 +69,50 @@ class HomeView extends ConsumerWidget {
                     ),
                   ],
                 ),
-                TTransparentButton(
-                  onTap: () {},
-                  color: Pallete.primaryTeal,
-                  child: SvgPicture.asset('bell'.svg),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () => navigateToReminders(context),
+                  child: SizedBox(
+                    height: 39.h,
+                    width: 50.w,
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: TTransparentButton(
+                            onTap: () => navigateToReminders(context),
+                            color: Pallete.primaryTeal,
+                            child: SvgPicture.asset('bell'.svg),
+                          ),
+                        ),
+                        StreamBuilder<List<Medicine>>(
+                          stream: globalBloc.medicineList$,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                              return Positioned(
+                                right: 0,
+                                child: CircleAvatar(
+                                  backgroundColor: Pallete.primaryTeal,
+                                  radius: 10,
+                                  child: Text(
+                                    snapshot.data!.length.toString(),
+                                    style: TextStyle(
+                                      color: Pallete.whiteColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13.sp,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -175,7 +218,8 @@ class HomeView extends ConsumerWidget {
                                     height: 30.h,
                                     width: 87.w,
                                     color: Pallete.blue,
-                                    onTap: () => navigateToAddReminders(context),
+                                    onTap: () =>
+                                        navigateToAddReminders(context),
                                     item: Text(
                                       'Add reminder',
                                       style: TextStyle(
@@ -222,26 +266,45 @@ class HomeView extends ConsumerWidget {
           ),
           16.sbH,
           SizedBox(
-            height: 106.h,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              physics: const AlwaysScrollableScrollPhysics(
-                  parent: BouncingScrollPhysics()),
-              itemCount: insightImages.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 100.w,
-                  margin: EdgeInsets.only(right: 13.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.r),
-                    border: Border.all(color: Pallete.primaryTeal),
-                    image: DecorationImage(
-                        image: AssetImage(insightImages[index].png),
-                        fit: BoxFit.cover),
-                  ),
+            height: 110.h,
+            child: articles.when(
+              data: (data) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  physics: const AlwaysScrollableScrollPhysics(
+                      parent: BouncingScrollPhysics()),
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ArticlesWebView(
+                            url: data[index].url!,
+                            isFromVideos: false,
+                          ),
+                        ));
+                      },
+                      child: Container(
+                        width: 100.w,
+                        margin: EdgeInsets.only(right: 13.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          border: Border.all(color: Pallete.primaryTeal),
+                          image: DecorationImage(
+                            image: NetworkImage(data[index].urlToImage ??
+                                Constants.defaultArticleImage),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
+              error: (error, stackTrace) => Text(error.toString()),
+              loading: () => const Loader(),
             ),
           ),
         ],

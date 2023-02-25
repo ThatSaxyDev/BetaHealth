@@ -51,11 +51,12 @@ class HelpView extends ConsumerWidget {
                     ),
                   ],
                 ),
-                TTransparentButton(
-                  onTap: () {},
-                  color: Pallete.primaryTeal,
-                  child: SvgPicture.asset('bell'.svg),
-                ),
+                // TTransparentButton(
+                //   onTap: () {},
+                //   color: Pallete.primaryTeal,
+                //   child: SvgPicture.asset('bell'.svg),
+                // ),
+                40.sbW,
               ],
             ),
           ),
