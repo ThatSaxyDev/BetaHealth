@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:betahealth/core/bloc/global_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ import 'package:betahealth/shared/widgets/button.dart';
 import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
+import 'package:provider/provider.dart' as pro;
 
 class ProfileView extends ConsumerWidget {
   const ProfileView({super.key});
@@ -27,17 +29,18 @@ class ProfileView extends ConsumerWidget {
     Routemaster.of(context).push('/new-symptoms');
   }
 
-  void showlogOutDialog(WidgetRef ref, BuildContext context) async {
+  void showlogOutDialog(WidgetRef ref, BuildContext context, GlobalBloc globalBloc) async {
     showDialog(
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
             title: const Text('Please Confirm'),
-            content: const Text('Are you sure you want to log out?'),
+            content: const Text('Are you sure you want to log out?\nYou would lose your reminders'),
             actions: [
               TextButton(
                 onPressed: () {
                   Routemaster.of(context).pop();
+                  globalBloc.removeAllMedicine();
                   logOut(ref);
                 },
                 child: const Text(
@@ -68,6 +71,7 @@ class ProfileView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
+    final GlobalBloc globalBloc = pro.Provider.of<GlobalBloc>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -146,6 +150,7 @@ class ProfileView extends ConsumerWidget {
                     },
                     icon: e.icon,
                     title: e.title,
+                    isReminder: e.isReminder,
                   ),
                 )
                 .toList(),
@@ -162,9 +167,10 @@ class ProfileView extends ConsumerWidget {
           //   color: Pallete.brownColor.withOpacity(0.3),
           // ),
           ProfileTile(
-            onTap: () => showlogOutDialog(ref, context),
+            onTap: () => showlogOutDialog(ref, context, globalBloc),
             icon: 'logout',
             title: 'Log out',
+            isReminder: false,
           ),
           30.sbH,
         ],
@@ -176,16 +182,18 @@ class ProfileView extends ConsumerWidget {
 class ProfileItem {
   final String icon;
   final String title;
+  final bool isReminder;
   const ProfileItem({
     required this.icon,
     required this.title,
+    required this.isReminder,
   });
 }
 
 const profileItems = [
-  ProfileItem(icon: 'newBell', title: 'Reminders'),
-  ProfileItem(icon: 'insights', title: 'Find nearby hospitals'),
-  ProfileItem(icon: 'add', title: 'Add new symptoms'),
+  ProfileItem(icon: 'newBell', title: 'Reminders', isReminder: true),
+  ProfileItem(icon: 'insights', title: 'Find nearby hospitals', isReminder: false),
+  ProfileItem(icon: 'add', title: 'Add new symptoms', isReminder: false),
 ];
 
 // Expanded(

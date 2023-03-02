@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:betahealth/core/notifications/notifications.dart';
 import 'package:betahealth/models/medicine.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,22 +14,25 @@ class GlobalBloc {
     makeMedicineList();
   }
 
+  //! TO REMOVE MEDICINE FROM THE GLOBAL LIST
   Future removeMedicine(Medicine tobeRemoved) async {
-    // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    //     FlutterLocalNotificationsPlugin();
+    //! Retrieve an instance of SharedPreferences.
     SharedPreferences sharedUser = await SharedPreferences.getInstance();
+
+    //! Create an empty List of String named medicineJsonList.
     List<String> medicineJsonList = [];
 
+    //! Remove the medicine to be removed from the list of medicines.
     var blockList = _medicineList$!.value;
     blockList.removeWhere(
         (medicine) => medicine.medicineName == tobeRemoved.medicineName);
 
-    //remove notifications,todo
+    //remove notifications
     for (int i = 0; i < (24 / tobeRemoved.interval!).floor(); i++) {
-      // flutterLocalNotificationsPlugin
-      //     .cancel(int.parse(tobeRemoved.notificationIDs![i]));
+      AwesomeNotifications().cancel(int.parse(tobeRemoved.notificationIDs![i]));
     }
 
+    //! Convert the remaining medicines to JSON strings and add them to medicineJsonList.
     if (blockList.isNotEmpty) {
       for (var blockMedicine in blockList) {
         String medicineJson = jsonEncode(blockMedicine.toJson());
@@ -35,8 +40,29 @@ class GlobalBloc {
       }
     }
 
+    //! Store the medicineJsonList in the SharedPreferences.
     sharedUser.setStringList('medicines', medicineJsonList);
+    //! Add the updated list of medicines to _medicineList$.
     _medicineList$!.add(blockList);
+  }
+
+  //! remove all reminder
+  Future removeAllMedicine() async {
+    //! Retrieve an instance of SharedPreferences.
+    SharedPreferences sharedUser = await SharedPreferences.getInstance();
+
+    //! Create an empty List of String named medicineJsonList.
+    List<String> medicineJsonList = [];
+
+    //remove all notifications
+    AwesomeNotifications().cancelAll();
+    cancelScheduledNotifications();
+
+    //! Stores the empty medicineJsonList in the SharedPreferences.
+    sharedUser.setStringList('medicines', medicineJsonList);
+
+    //! Adds an empty List to _medicineList$.
+    _medicineList$!.add([]);
   }
 
   Future updateMedicineList(Medicine newMedicine) async {

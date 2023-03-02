@@ -1,4 +1,6 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:betahealth/core/bloc/global_bloc.dart';
+import 'package:betahealth/core/notifications/notifications_controller.dart';
 import 'package:betahealth/features/auth/controllers/auth_controller.dart';
 import 'package:betahealth/features/auth/views/auth_view.dart';
 import 'package:betahealth/firebase_options.dart';
@@ -17,9 +19,32 @@ import 'package:provider/provider.dart' as pro;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AwesomeNotifications().initialize(
+    'resource://drawable/res_notification_app_icon',
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic Notifications',
+        defaultColor: Colors.teal,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+        channelDescription: 'basic_channel',
+      ),
+      NotificationChannel(
+        channelKey: 'scheduled_channel',
+        channelName: 'Scheduled Notifications',
+        defaultColor: Colors.teal,
+        locked: true,
+        importance: NotificationImportance.Max,
+        soundSource: 'resource://raw/res_custom_notification',
+        channelDescription: 'scheduled_channel',
+      ),
+    ],
+  );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -28,6 +53,8 @@ void main() async {
 }
 
 class MyApp extends ConsumerStatefulWidget {
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
   const MyApp({super.key});
 
   @override
@@ -51,6 +78,14 @@ class _MyAppState extends ConsumerState<MyApp> {
   void initState() {
     super.initState();
     globalBloc = GlobalBloc();
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+        onNotificationCreatedMethod:
+            NotificationController.onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:
+            NotificationController.onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:
+            NotificationController.onDismissActionReceivedMethod);
   }
 
   @override

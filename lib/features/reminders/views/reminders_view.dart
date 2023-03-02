@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,19 +19,29 @@ import 'package:betahealth/theme/palette.dart';
 import 'package:betahealth/utils/string_extensions.dart';
 import 'package:betahealth/utils/widget_extensions.dart';
 
-class RemindersView extends ConsumerWidget {
+class RemindersView extends ConsumerStatefulWidget {
   final Medicine? medicine;
   const RemindersView({
     super.key,
     this.medicine,
   });
 
+  @override
+  ConsumerState<RemindersView> createState() => _RemindersViewState();
+}
+
+class _RemindersViewState extends ConsumerState<RemindersView> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void deleteReminder(GlobalBloc globalBloc, BuildContext context) async {
-    globalBloc.removeMedicine(medicine!);
+    globalBloc.removeMedicine(widget.medicine!);
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final GlobalBloc globalBloc = pro.Provider.of<GlobalBloc>(context);
     return Scaffold(
       body: Column(
@@ -128,6 +139,7 @@ class RemindersView extends ConsumerWidget {
             child: StreamBuilder(
               stream: globalBloc.medicineList$,
               builder: (context, snapshot) {
+                
                 if (!snapshot.hasData) {
                   //if no data is saved
                   return const SizedBox.shrink();
