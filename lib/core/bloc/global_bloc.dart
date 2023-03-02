@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:betahealth/core/notifications/notifications.dart';
 import 'package:betahealth/models/medicine.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,6 +56,7 @@ class GlobalBloc {
 
     //remove all notifications
     AwesomeNotifications().cancelAll();
+    cancelScheduledNotifications();
 
     //! Stores the empty medicineJsonList in the SharedPreferences.
     sharedUser.setStringList('medicines', medicineJsonList);

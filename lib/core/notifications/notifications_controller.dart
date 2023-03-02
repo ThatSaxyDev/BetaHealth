@@ -8,14 +8,26 @@ class NotificationController {
   @pragma("vm:entry-point")
   static Future<void> onNotificationCreatedMethod(
       ReceivedNotification receivedNotification) async {
-    // Your code goes here
+    if (receivedNotification.channelKey == 'basic_channel' ||
+        receivedNotification.channelKey == 'scheduled_channel' &&
+            Platform.isIOS) {
+      AwesomeNotifications().getGlobalBadgeCounter().then(
+            (value) => AwesomeNotifications().setGlobalBadgeCounter(0),
+          );
+    }
   }
 
   /// Use this method to detect every time that a new notification is displayed
   @pragma("vm:entry-point")
   static Future<void> onNotificationDisplayedMethod(
       ReceivedNotification receivedNotification) async {
-    // Your code goes here
+    if (receivedNotification.channelKey == 'basic_channel' ||
+        receivedNotification.channelKey == 'scheduled_channel' &&
+            Platform.isIOS) {
+      AwesomeNotifications().getGlobalBadgeCounter().then(
+            (value) => AwesomeNotifications().setGlobalBadgeCounter(0),
+          );
+    }
   }
 
   /// Use this method to detect if the user dismissed a notification
@@ -34,7 +46,6 @@ class NotificationController {
   @pragma("vm:entry-point")
   static Future<void> onActionReceivedMethod(
       ReceivedAction receivedAction) async {
-    // Your code goes here
     if (receivedAction.channelKey == 'basic_channel' ||
         receivedAction.channelKey == 'scheduled_channel' && Platform.isIOS) {
       AwesomeNotifications().getGlobalBadgeCounter().then(

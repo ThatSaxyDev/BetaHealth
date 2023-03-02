@@ -141,7 +141,10 @@ class HomeView extends ConsumerWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
                       image: DecorationImage(
-                          image: AssetImage(homeViewSliderContent[index].png)),
+                        image: AssetImage(homeViewSliderContent[index].png),
+                        fit: BoxFit.cover
+                      ),
+                      border: Border.all()
                     ),
                   ),
                 );
