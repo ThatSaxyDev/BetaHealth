@@ -10,13 +10,26 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		7D5C8A40CCF7946B1E80A72C /* Pods_BetaHealthServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C47E5993B79DBB22B7560EE /* Pods_BetaHealthServiceExtension.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		A9D303F3DB8920979FC8AE8B /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E1ABDFE13A482F8C8A6F29 /* Pods_Runner.framework */; };
 		CE03AEA2299F7E4B00F5016E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE03AEA1299F7E4B00F5016E /* GoogleService-Info.plist */; };
+		CE207F3329B0C42B002E8D23 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE207F3229B0C42B002E8D23 /* NotificationService.swift */; };
+		CE207F3729B0C42B002E8D23 /* BetaHealthServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE207F3029B0C42B002E8D23 /* BetaHealthServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CE30E77629AA25BC00FC38A3 /* res_custom_notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CE30E77529AA25BC00FC38A3 /* res_custom_notification.aiff */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE207F3529B0C42B002E8D23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE207F2F29B0C42B002E8D23;
+			remoteInfo = BetaHealthServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
@@ -29,6 +42,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE207F3829B0C42B002E8D23 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE207F3729B0C42B002E8D23 /* BetaHealthServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +61,12 @@
 		222D07EFB511C2D03D676A57 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		4408662EBB21CA3466DCF4DA /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		59BB2438A49337059AB34CF4 /* Pods-Runner-BetaHealthServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner-BetaHealthServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-Runner-BetaHealthServiceExtension/Pods-Runner-BetaHealthServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		5B26E990ACE032DF7E44F730 /* Pods-BetaHealthServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetaHealthServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-BetaHealthServiceExtension/Pods-BetaHealthServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		7C47E5993B79DBB22B7560EE /* Pods_BetaHealthServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetaHealthServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,10 +74,17 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BD86C2A21BA74DE0C96EB14 /* Pods-Runner-BetaHealthServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner-BetaHealthServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-Runner-BetaHealthServiceExtension/Pods-Runner-BetaHealthServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AA155722A09F3D47C4059D87 /* Pods-BetaHealthServiceExtension.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetaHealthServiceExtension.profile.xcconfig"; path = "Target Support Files/Pods-BetaHealthServiceExtension/Pods-BetaHealthServiceExtension.profile.xcconfig"; sourceTree = "<group>"; };
 		CE03AEA1299F7E4B00F5016E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE207F3029B0C42B002E8D23 /* BetaHealthServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetaHealthServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE207F3229B0C42B002E8D23 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		CE207F3429B0C42B002E8D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE30E77529AA25BC00FC38A3 /* res_custom_notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = res_custom_notification.aiff; sourceTree = "<group>"; };
 		D3E1ABDFE13A482F8C8A6F29 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83B6B967F6CE573A7457E1C /* Pods-Runner-BetaHealthServiceExtension.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner-BetaHealthServiceExtension.profile.xcconfig"; path = "Target Support Files/Pods-Runner-BetaHealthServiceExtension/Pods-Runner-BetaHealthServiceExtension.profile.xcconfig"; sourceTree = "<group>"; };
 		EC268CC04309C672B7254704 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		F47D81676C29A965B57887E1 /* Pods-BetaHealthServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetaHealthServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-BetaHealthServiceExtension/Pods-BetaHealthServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +93,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9D303F3DB8920979FC8AE8B /* Pods_Runner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE207F2D29B0C42B002E8D23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D5C8A40CCF7946B1E80A72C /* Pods_BetaHealthServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +113,12 @@
 				4408662EBB21CA3466DCF4DA /* Pods-Runner.debug.xcconfig */,
 				222D07EFB511C2D03D676A57 /* Pods-Runner.release.xcconfig */,
 				EC268CC04309C672B7254704 /* Pods-Runner.profile.xcconfig */,
+				F47D81676C29A965B57887E1 /* Pods-BetaHealthServiceExtension.debug.xcconfig */,
+				5B26E990ACE032DF7E44F730 /* Pods-BetaHealthServiceExtension.release.xcconfig */,
+				AA155722A09F3D47C4059D87 /* Pods-BetaHealthServiceExtension.profile.xcconfig */,
+				9BD86C2A21BA74DE0C96EB14 /* Pods-Runner-BetaHealthServiceExtension.debug.xcconfig */,
+				59BB2438A49337059AB34CF4 /* Pods-Runner-BetaHealthServiceExtension.release.xcconfig */,
+				D83B6B967F6CE573A7457E1C /* Pods-Runner-BetaHealthServiceExtension.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -91,6 +139,7 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
+				CE207F3129B0C42B002E8D23 /* BetaHealthServiceExtension */,
 				97C146EF1CF9000F007C117D /* Products */,
 				90F61BC963444EF984CEFE7B /* Pods */,
 				C2D68AB6A9FF6AB4B17B22FC /* Frameworks */,
@@ -101,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
+				CE207F3029B0C42B002E8D23 /* BetaHealthServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,8 +176,18 @@
 			isa = PBXGroup;
 			children = (
 				D3E1ABDFE13A482F8C8A6F29 /* Pods_Runner.framework */,
+				7C47E5993B79DBB22B7560EE /* Pods_BetaHealthServiceExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE207F3129B0C42B002E8D23 /* BetaHealthServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CE207F3229B0C42B002E8D23 /* NotificationService.swift */,
+				CE207F3429B0C42B002E8D23 /* Info.plist */,
+			);
+			path = BetaHealthServiceExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,15 +206,35 @@
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				D7952BBC34FCF5BC0A66C762 /* [CP] Embed Pods Frameworks */,
 				BD80E2F677007667ADBD664F /* [CP] Copy Pods Resources */,
+				CE207F3829B0C42B002E8D23 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CE207F3629B0C42B002E8D23 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CE207F2F29B0C42B002E8D23 /* BetaHealthServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE207F3C29B0C42B002E8D23 /* Build configuration list for PBXNativeTarget "BetaHealthServiceExtension" */;
+			buildPhases = (
+				E5C5F181ED43CD4E3E6AB1B9 /* [CP] Check Pods Manifest.lock */,
+				CE207F2C29B0C42B002E8D23 /* Sources */,
+				CE207F2D29B0C42B002E8D23 /* Frameworks */,
+				CE207F2E29B0C42B002E8D23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BetaHealthServiceExtension;
+			productName = BetaHealthServiceExtension;
+			productReference = CE207F3029B0C42B002E8D23 /* BetaHealthServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -162,12 +242,16 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1100;
+					};
+					CE207F2F29B0C42B002E8D23 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -185,6 +269,7 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
+				CE207F2F29B0C42B002E8D23 /* BetaHealthServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +285,13 @@
 				CE03AEA2299F7E4B00F5016E /* GoogleService-Info.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE207F2E29B0C42B002E8D23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +384,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5C5F181ED43CD4E3E6AB1B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BetaHealthServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -304,7 +418,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE207F2C29B0C42B002E8D23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE207F3329B0C42B002E8D23 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE207F3629B0C42B002E8D23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE207F2F29B0C42B002E8D23 /* BetaHealthServiceExtension */;
+			targetProxy = CE207F3529B0C42B002E8D23 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
@@ -380,7 +510,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 27LSZPF3J7;
@@ -509,7 +641,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 27LSZPF3J7;
@@ -532,7 +666,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 27LSZPF3J7;
@@ -549,6 +685,123 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		CE207F3929B0C42B002E8D23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F47D81676C29A965B57887E1 /* Pods-BetaHealthServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27LSZPF3J7;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetaHealthServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetaHealthServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kiishidart.betahealth.BetaHealthServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE207F3A29B0C42B002E8D23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B26E990ACE032DF7E44F730 /* Pods-BetaHealthServiceExtension.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27LSZPF3J7;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetaHealthServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetaHealthServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kiishidart.betahealth.BetaHealthServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CE207F3B29B0C42B002E8D23 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA155722A09F3D47C4059D87 /* Pods-BetaHealthServiceExtension.profile.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27LSZPF3J7;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BetaHealthServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetaHealthServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kiishidart.betahealth.BetaHealthServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Profile;
 		};
 /* End XCBuildConfiguration section */
 
@@ -569,6 +822,16 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE207F3C29B0C42B002E8D23 /* Build configuration list for PBXNativeTarget "BetaHealthServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE207F3929B0C42B002E8D23 /* Debug */,
+				CE207F3A29B0C42B002E8D23 /* Release */,
+				CE207F3B29B0C42B002E8D23 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
